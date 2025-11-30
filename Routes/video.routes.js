@@ -6,6 +6,8 @@ const router = Router();
 
 router.post("/video",auth, VideoController.uploadVideo);
 router.get("/allvideo",auth, VideoController.getAllVideo);
+router.get("/getvideobyid/:id",auth, VideoController.getVideoById);
+router.get("/getvideobyuserid/:userId",auth, VideoController.getVideoByUserId);
 
 
 export default router;
