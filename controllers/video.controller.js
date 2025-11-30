@@ -74,7 +74,20 @@ const VideoController = {
       console.error(error);
       return res.status(500).json({ message: "internal server error" });
     }
-  }
+  },
+
+    async getAllVideo(req,res){
+        try{
+            const videos=await Video.find().populate('user','channelName profilePic userName createdAt');
+             return res.status(201).json({ success: true, "videos":videos });
+        }catch (error) {
+             console.error(error);
+             return res.status(500).json({ message: "internal server error" });
+        }
+    }
+
+
+
 };
 
 export default VideoController;

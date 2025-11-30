@@ -5,6 +5,7 @@ import auth from '../middleware/Authentication.js'
 const router = Router();
 
 router.post("/video",auth, VideoController.uploadVideo);
+router.get("/allvideo",auth, VideoController.getAllVideo);
 
 
 export default router;
