@@ -1,29 +1,45 @@
-
 import User from "../models/User.model.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+
+const cookieOptions = {
+  httpOnly: true,
+  secure: false,   
+  sameSite: "Lax",
+};
+
+const JWT_SECRET = "SECRET"; // 
 
 const UserController = {
+ 
+  // SIGN UP
+
   async signUp(req, res) {
     try {
-      const { channelName, userName, about, profilePic, password, email, fullName } = req.body;
+      const {
+        channelName,
+        userName,
+        about,
+        profilePic,
+        password,
+        email,
+        fullName,
+      } = req.body;
 
-      // Check required fields
       if (!userName || !email || !password) {
         return res.status(400).json({ message: "Missing required fields" });
       }
 
-      // Check if user exists
       const isExist = await User.findOne({ userName });
+
       if (isExist) {
         return res.status(400).json({
           message: "User already exists with this userName",
         });
       }
 
-      // Hash password
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Create user
       const user = new User({
         channelName,
         userName,
@@ -46,23 +62,51 @@ const UserController = {
     }
   },
 
-    async signIn(req,res){
-        try{
-            const {userName,password}=req.body;
-            const user= await User.findOne({userName});
+  
+  // SIGN IN (LOGIN)
+  
+  async signIn(req, res) {
+    try {
+      const { userName, password } = req.body;
 
-            if(user && await bcrypt.compare(password,user.password)){
-               return res.status(201).json({message:'logged in successfully',success:'true'});
-            }else{
-                res.status(400).json({error:'invalid credentials'});
-            }
-        } catch (err) {
+      const user = await User.findOne({ userName });
+
+      if (!user) {
+        return res.status(400).json({ error: "Invalid credentials" });
+      }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!isMatch) {
+        return res.status(400).json({ error: "Invalid credentials" });
+      }
+
+      // Generate JWT
+      const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+        expiresIn: "7d",
+      });
+
+      // Set cookie
+      res.cookie("token", token, cookieOptions);
+
+      return res.status(200).json({
+        message: "Logged in successfully",
+        success: true,
+        token,
+      });
+    } catch (err) {
       console.error(err);
       return res.status(500).json({ message: "Something went wrong" });
     }
-    }
+  },
 
-
+  
+  // LOGOUT
+  
+  logout(req, res) {
+    res.clearCookie("token", cookieOptions);
+    return res.json({ message: "Logged Out success" });
+  },
 };
 
 export default UserController;
