@@ -83,7 +83,7 @@ const UserController = {
 
       // Generate JWT
       const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
-        expiresIn: "7d",
+        expiresIn: "10d",
       });
 
       // Set cookie

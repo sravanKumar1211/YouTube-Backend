@@ -16,3 +16,5 @@ const auth= async(req,resizeBy,next)=>{
         }
     }
 }
+
+export default auth;
