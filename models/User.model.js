@@ -35,7 +35,6 @@ const userSchema = new mongoose.Schema(
     channelName: {
       type: String,
       required: true,
-      ref: "Channel", 
       default: null   // user may not have channel yet
     }
   },
