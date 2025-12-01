@@ -21,6 +21,7 @@ const UserController = {
         userName,
         about,
         profilePic,
+        channelBanner,
         password,
         email,
         fullName,
@@ -47,6 +48,7 @@ const UserController = {
         profilePic,
         email,
         fullName,
+        channelBanner,
         password: hashedPassword,
       });
 

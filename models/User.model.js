@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "" // optional
     },
+     channelBanner: {
+      type: String,
+      default: "" // optional
+    },
     password: {
       type: String,
       required: true
@@ -32,11 +36,13 @@ const userSchema = new mongoose.Schema(
         type:String,
         required:true
     },
-    channelName: {
-      type: String,
+    
+    channelName: { 
+      type: String, 
       required: true,
-      default: null   // user may not have channel yet
-    }
+       trim: true 
+      },
+
   },
   { timestamps: true }
 );

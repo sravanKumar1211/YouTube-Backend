@@ -4,7 +4,7 @@ const ChannelController = {
        async getChannelVideoByUserId(req,res){
     try{
         let { userId } = req.params;
-        const video = await Video.find({ user: userId }).populate('user','channelName profilePic userName createdAt');
+        const video = await Video.find({ user: userId }).populate('user','channelName profilePic channelBanner userName createdAt about');
 
         return res.status(200).json({
             success: true,
