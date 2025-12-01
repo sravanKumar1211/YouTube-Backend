@@ -5,6 +5,7 @@ import { connectDB } from "./DataBase/database.js";
 import AuthRoutes from "./Routes/user.routes.js";
 import VideoRoutes from "./Routes/video.routes.js";
 import CommentRoutes from "./Routes/comment.routes.js";
+import ChannelRoutes from "./Routes/chnnel.router.js";
 
 const app = express();
 app.use(cors({
@@ -19,6 +20,7 @@ connectDB();
 app.use("/auth", AuthRoutes);
 app.use("/api", VideoRoutes);
 app.use("/commentapi", CommentRoutes);
+app.use("/channelapi", ChannelRoutes);
 
 app.listen(3000, () => {
   console.log("Server running on port 3000");

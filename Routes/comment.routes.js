@@ -5,7 +5,7 @@ import CommentController from "../controllers/comment.controller.js";
 const router = Router();
 
 router.post("/comment",auth, CommentController.addComment);
-router.get("/comment/:videoid",auth, CommentController.getCommentByVideoId);
+router.get("/comment/:videoid", CommentController.getCommentByVideoId);
 
 
 export default router;
