@@ -69,7 +69,7 @@ const UserController = {
   
   async signIn(req, res) {
     try {
-      const { userName, password } = req.body;
+      const { userName, password,email } = req.body;
 
       const user = await User.findOne({ userName });
 
@@ -94,6 +94,7 @@ const UserController = {
       return res.status(200).json({
         message: "Logged in successfully",
         success: true,
+        user:user,
         token,
       });
     } catch (err) {
