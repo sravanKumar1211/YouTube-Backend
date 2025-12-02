@@ -10,7 +10,7 @@ import ChannelRoutes from "./Routes/chnnel.router.js";
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5175",
+  origin: "http://localhost:5173",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
@@ -23,7 +23,7 @@ connectDB();
 
 app.use((req, res, next) => {
   res.on("finish", () => {
-    console.log("🔥 CORS Origin Sent:", res.getHeader("Access-Control-Allow-Origin"));
+   // console.log("🔥 CORS Origin Sent:", res.getHeader("Access-Control-Allow-Origin"));
   });
   next();
 });
