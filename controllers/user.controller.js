@@ -8,6 +8,8 @@ const cookieOptions = {
   sameSite: "Lax",
 };
 
+
+
 const JWT_SECRET = "SECRET"; // 
 
 const UserController = {
