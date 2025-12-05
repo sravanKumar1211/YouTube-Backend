@@ -19,7 +19,7 @@ const auth = async (req, res, next) => {
     }
   }
 
-  // STEP 3: IF TOKEN STILL MISSING → DENY ACCESS //
+  // STEP 3:- IF TOKEN STILL MISSING → DENY ACCESS //
   if (!token) {
     return res.status(401).json({ error: "No token, authorization denied" });
   }
