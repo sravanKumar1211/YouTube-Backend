@@ -3,24 +3,45 @@ git clone [https://github.com/sravanKumar1211/YouTube-Backend.git](https://githu
 
 A robust and scalable RESTful API built with **Node.js**, **Express**, and **MongoDB** to power a video streaming application similar to YouTube. This backend handles complex features like video uploads, user authentication, subscription management, and tweet-like community interactions.
 
-## 🚀 Features
 
-- **User Authentication**: Secure Signup/Login using JWT (JSON Web Tokens) and bcrypt for password hashing.
-- **Video Management**: Upload, update, and delete videos with thumbnail generation.
-- **File Handling**: Integrated **Cloudinary** for storing video files and images efficiently.
-- **Engagement**: 
-  - videos, comments, and tweets.
-  - Comment system with support for nested threads (if implemented).
-- **Search**: Optimized search for videos and channels.
+Features
+User Authentication: Secure Sign up, Login, Logout using JWT (Access & Refresh tokens) and Bcrypt.
 
-## 🛠️ Tech Stack
+Video Management: Upload videos and thumbnails using Multer and Cloudinary.
 
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Database**: MongoDB (Mongoose ODM)
-- **Cloud Storage**: Cloudinary (for images/videos)
-- **Authentication**: JWT, Bcrypt, Cookie-Parser
-- **Middleware**: Multer (file uploads), CORS
+Subscription System: Subscribe/Unsubscribe to channels and view subscriber counts.
+
+Engagement: Like/Dislike videos, comments, and tweets.
+
+Comments: Add, update, and delete comments on videos.
+
+Playlists: Create and manage custom video playlists.
+
+Dashboard: View channel statistics (total views, subscribers, total videos).
+
+Search: Optimized search for videos based on title and description.
+
+Watch History: Track and manage user watch history.
+
+Technologies
+Node.js (Runtime environment)
+
+Express.js (Web framework)
+
+MongoDB (Database)
+
+Mongoose (ODM)
+
+JWT (JSON Web Tokens for Auth)
+
+Bcrypt (Password hashing)
+
+Multer (Middleware for file handling)
+
+Cloudinary (Cloud storage for Images/Videos)
+
+Cookie-Parser (Secure cookie handling)
+
 
 ## 🗄️ Project Schema
 
@@ -74,20 +95,11 @@ Install Dependencies
 Bash
 
 npm install
-Set Environment Variables Create a .env file in the root directory and add:
 
 Code snippet
 
 PORT=3000
-MONGODB_URI=your_mongodb_connection_string
-CORS_ORIGIN=*
-ACCESS_TOKEN_SECRET=your_access_secret
-ACCESS_TOKEN_EXPIRY=1d
-REFRESH_TOKEN_SECRET=your_refresh_secret
-REFRESH_TOKEN_EXPIRY=10d
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+
 Run the Server
 
 Bash
@@ -97,3 +109,7 @@ npm start
 npm run dev
 
 Built with ❤️ by Sravan Kumar
+
+
+
+
